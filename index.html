@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ViagemMundo</title>
+    <link rel="stylesheet" href="style.cs">
+    <link rel="shortcut icon" type="image/png" href="images/turismo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+            position: relative;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links, .social-icons {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-links a, .social-icons a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .social-icons a:hover {
+            color: #ff6f61;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .hero {
+            background: url('images/hero.png') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            color: transparent;
+            background: linear-gradient(to right, #ff6f61, #ff9061, #ff6f61);
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: text-gradient 5s linear infinite;
+        }
+
+        .explore-btn {
+            background: #ff6f61;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .explore-btn:hover {
+            background: #ff4a3c;
+        }
+
+        .about-section, .gallery-section, .contact-section {
+            padding: 3rem 0;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+        }
+
+        p {
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .team {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .team-member {
+            text-align: center;
+            margin: 1rem;
+        }
+
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+
+        h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .gallery-item {
+            margin: 1rem;
+            text-align: center;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .contact-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .contact-form, .contact-map {
+            width: 45%;
+            margin: 1rem 0;
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .submit-btn {
+            background: #ff6f61;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #ff4a3c;
+        }
+
+        .footer-section {
+            background: #333;
+            color: #fff;
+            padding: 2rem 0;
+        }
+
+        .footer-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .footer-about, .footer-links, .footer-contact {
+            width: 30%;
+            margin: 1rem 0;
+        }
+
+        .footer-about p, .footer-links ul, .footer-contact p {
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links ul li a:hover {
+            color: #ff6f61;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .footer-about p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #fff;
+            transition: color 0.3s;
+        }
+
+        .footer-about p:hover {
+            color: #ff6f61;
+        }
+
+        .footer-social a {
+            color: #fff;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-social a:hover {
+            color: #ff6f61;
+        }
+
+        @media screen and (max-width: 768px) {
+            .navbar, .social-icons {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+            }
+
+            .navbar.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+            }
+
+            .team, .gallery-grid, .contact-grid, .footer-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-form, .contact-map, .footer-about, .footer-links, .footer-contact {
+                width: 90%;
+                text-align: center;
+            }
+
+            .logo-container {
+                justify-content: center;
+            }
+        }
+
+        @keyframes text-gradient {
+            0% {
+                background-position: 0 100%;
+            }
+            100% {
+                background-position: 100% 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="images/logo.png" class="logo" alt="Logo ViagemMundo">
+                <h1>ViagemMundo</h1>
+            </div>
+            <nav class="navbar">
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Explore</a></li>
+                    <li><a href="#">Lugares</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+                <ul class="social-icons">
+                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" aria-label="Toggle Menu"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+    <section class="hero">
+        <h1 class="title">Explore o Mundo com a ViagemMundo</h1>
+        <a href="#" class="explore-btn">Explorar</a>
+    </section>
+    <section id="sobre" class="about-section">
+        <div class="container">
+            <h2>Sobre Nós</h2>
+            <p>ViagemMundo é a sua fonte principal para descobrir destinos turísticos incríveis em todo o mundo.</p>
+            <div class="team">
+                <div class="team-member">
+                    <img src="images/team1.png" alt="Membro da Equipe">
+                    <h4>João Silva</h4>
+                    <p>Fundador</p>
+                </div>
+                <div class="team-member">
+                    <img src="images/team2.png" alt="Membro da Equipe">
+                    <h4>Maria Oliveira</h4>
+                    <p>Co-Fundadora</p>
+                </div>
+                <div class="team-member">
+                    <img src="images/team3.png" alt="Membro da Equipe">
+                    <h4>Carlos Santos</h4>
+                    <p>Fotógrafo</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="gallery-section">
+        <div class="container">
+            <h2>Galeria</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/lugar1.png" alt="Imagem da Galeria">
+                    <p>Partenon, Grecia</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/lugar2.png" alt="Imagem da Galeria">
+                    <p>Coliseu, Roma</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/lugar3.png" alt="Imagem da Galeria">
+                    <p>Torre Eiffel, Paris</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/lugar4.png" alt="Imagem da Galeria">
+                    <p>Grande Muralha, China</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/lugar5.png" alt="Imagem da Galeria">
+                    <p>Machu Picchu, Peru</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/lugar6.png" alt="Imagem da Galeria">
+                    <p>Estátua da Liberdade, EUA</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contato" class="contact-section">
+        <div class="container">
+            <h2>Contato</h2>
+            <div class="contact-grid">
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Enviar</button>
+                    </form>
+                </div>
+                <div class="contact-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509337!2d144.9559263153171!3d-37.81720997975178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf0727a668776df69!2sFederation%20Square!5e0!3m2!1sen!2sau!4v1633439274223!5m2!1sen!2sau" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3>Sobre Nós</h3>
+                    <p>ViagemMundo é a sua fonte principal para descobrir destinos turísticos incríveis em todo o mundo. Inspirando viajantes desde 2023.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Links Úteis</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Explore</a></li>
+                        <li><a href="#">Lugares</a></li>
+                        <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contato</h3>
+                    <p>Email: contato@viagemmundo.com</p>
+                    <p>Telefone: (11) 1234-5678</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 ViagemMundo. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navbar = document.querySelector('.navbar');
+
+        menuToggle.addEventListener('click', () => {
+            navbar.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
+
+
